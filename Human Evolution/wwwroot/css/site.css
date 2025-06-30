@@ -1,0 +1,306 @@
+/* ==== BASE ==== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+}
+
+/* ==== HERO SECTION ==== */
+.hero {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/images/hero-background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 0 20px;
+}
+
+    .hero img {
+        height: 120px;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+/* ==== BOUTONS ==== */
+.btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bb5;
+    color: white;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #005f8e;
+    }
+
+.btn-outline-light {
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+}
+
+    .btn-outline-light:hover {
+        background-color: white;
+        color: #333;
+    }
+
+/* ==== SECTIONS ==== */
+section {
+    padding: 60px 0;
+}
+
+    section h2 {
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    section p.lead {
+        font-size: 1.15rem;
+    }
+
+/* ==== SERVICES ==== */
+.card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.2s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* ==== FOOTER ==== */
+footer {
+    background-color: #111;
+    color: #ccc;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.full-width-section {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+}
+
+.justified-text {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.border-dark {
+    border-color: #bfa76f !important; /* doré raffiné */
+}
+
+.text-dark {
+    color: #bfa76f !important;
+}
+
+.expertise-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140px;
+    margin: 0.5rem;
+}
+
+    .expertise-pill .icon-circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #ffffff, #eaeaea); /* effet lumineux */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* ombre douce */
+        border: 1px solid #ddd; /* optionnel pour le relief */
+    }
+
+        .expertise-pill .icon-circle svg {
+            width: 30px;
+            height: 30px;
+            color: #bfa76f; /* or raffiné */
+            transition: transform 0.2s ease;
+        }
+
+        .expertise-pill .icon-circle:hover svg {
+            transform: scale(1.1); /* zoom léger au survol */
+        }
+
+    .expertise-pill span {
+        font-size: 0.9rem;
+        color: #333;
+        text-align: center;
+        font-weight: 500;
+    }
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #bfa76f;
+    transition: transform 0.3s ease;
+}
+
+.expertise-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.icon-circle:hover {
+    transform: scale(1.05);
+}
+
+.expertise-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140px;
+    margin: 1rem;
+}
+
+    .expertise-pill span {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+    }
+
+.icon-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(191, 167, 111, 0.5);
+    border-color: #bfa76f;
+}
+
+.nav-logo {
+    height: 90px;
+    margin-top: -20px; /* Fait dépasser le logo au-dessus de la navbar */
+    margin-bottom: -20px; /* Idem en dessous, pour bien centrer */
+}
+
+</style >
+
+.sticky-sidebar {
+    position: sticky;
+    top: 100px; /* ajuste en fonction de la hauteur de ta navbar */
+    z-index: 1010;
+}
+
+.container,
+.row {
+    overflow: visible !important;
+}
+
+.service-section {
+    display: none;
+}
+
+    .service-section.d-block {
+        display: block !important;
+    }
+
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+    .clickable-card:hover {
+        transform: scale(1.02);
+        background-color: #f8f9fa;
+    }
+
+.clickable-card {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+    .clickable-card:hover {
+        transform: scale(1.02);
+        background-color: #f8f9fa;
+    }
+
+.selected-card {
+    background-color: #007bff !important;
+    color: white !important;
+    border: 2px solid #0056b3;
+}

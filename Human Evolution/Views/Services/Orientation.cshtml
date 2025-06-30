@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Services & Formations - Orientation";
+}
+
+<!-- Onglet de redirection vers services complets -->
+<div class="container py-3 text-end">
+    <a href="/Services/Services" class="btn btn-outline-secondary">Voir tous nos services</a>
+</div>
+
+<style>
+    .clickable-domain {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 16px;
+        border: 2px solid #dee2e6;
+        background-color: #ffffff;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        color: #212529;
+    }
+
+        .clickable-domain:hover {
+            background-color: #f0f8ff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+    .selected-card {
+        border: 2px solid #0d6efd !important;
+        background-color: #e0efff !important;
+        color: #0d6efd !important;
+        font-weight: 700;
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+    }
+
+    /* Cartes de services (sous-domaines) */
+    .clickable-card {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        border: 1.5px solid #dee2e6;
+        background-color: #fff;
+        padding: 18px 12px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-align: center;
+        color: #212529;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+        .clickable-card:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.02);
+        }
+
+        .clickable-card.selected-card {
+            border: 2px solid #0d6efd;
+            background-color: #d9eaff;
+            font-weight: bold;
+            color: #0d6efd;
+            box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
+        }
+
+    /* Titre clair pour les prestations */
+    #servicesByDomain h5 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #343a40;
+        margin-bottom: 1rem;
+        border-left: 4px solid #0d6efd;
+        padding-left: 10px;
+    }
+</style>
+
+
+
+<!-- Domaine principal -->
+<div class="container py-5">
+    <h1 class="text-center mb-4">Choisissez vos domaines d’intérêt</h1>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm clickable-domain" onclick="toggleDomain('conseil')">
+                <div class="card-body text-center">Consulting stratégique</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm clickable-domain" onclick="toggleDomain('audit')">
+                <div class="card-body text-center">Audit</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm clickable-domain" onclick="toggleDomain('formation')">
+                <div class="card-body text-center">Formation</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm clickable-domain" onclick="toggleDomain('coaching')">
+                <div class="card-body text-center">Coaching Professionnel</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section prestations dynamiques -->
+<div class="container py-4" id="servicesByDomain"></div>
+
+<!-- Formulaire de contact -->
+<div class="container py-5">
+    <h3 class="text-center mb-4">Votre sélection</h3>
+    <div class="alert alert-light border">
+        <strong>Domaines sélectionnés :</strong>
+        <ul id="domainList"></ul>
+        <strong>Prestations sélectionnées :</strong>
+        <ul id="serviceList"></ul>
+    </div>
+
+    <form class="row g-3">
+        <input type="hidden" name="SelectedDomains" id="SelectedDomains" />
+        <input type="hidden" name="SelectedServices" id="SelectedServices" />
+
+        <div class="col-md-6">
+            <label class="form-label">Nom complet</label>
+            <input type="text" class="form-control" name="FullName" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="Email" required>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" name="Message" rows="3"></textarea>
+        </div>
+        <div class="col-12 text-center">
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+        </div>
+    </form>
+</div>
+
+<!-- Script logique -->
+<script>
+    const prestations = {
+        conseil: ["Trouver un bien immobilier", "Finances & croissance", "Structurer & développer un projet"],
+        audit: ["Projet immobilier", "Optimiser finances", "Entreprise"],
+        formation: ["Investissement", "Entrepreneuriat", "Immobilier & Construction"],
+        coaching: ["Marketing de soi", "Affirmation & confiance de soi", "Prise de position & décision"]
+    };
+
+    let selectedDomains = [];
+    let selectedServices = [];
+
+    function toggleDomain(domain) {
+        const domainIndex = selectedDomains.indexOf(domain);
+        const domainCard = document.querySelector(`.clickable-domain[onclick*="${domain}"]`);
+
+        if (domainIndex === -1) {
+            selectedDomains.push(domain);
+            domainCard.classList.add("selected-card");
+            showServicesForDomain(domain);
+        } else {
+            selectedDomains.splice(domainIndex, 1);
+            domainCard.classList.remove("selected-card");
+            document.getElementById(`services-${domain}`).remove();
+            selectedServices = selectedServices.filter(s => !s.startsWith(domain + "::"));
+        }
+
+        updateSummary();
+    }
+
+    function showServicesForDomain(domain) {
+        const container = document.getElementById("servicesByDomain");
+        const section = document.createElement("div");
+        section.className = "my-4";
+        section.id = `services-${domain}`;
+
+        let html = `<h5 class="mb-3 text-capitalize">${domain}</h5><div class="row g-3">`;
+        prestations[domain].forEach(service => {
+            const id = `${domain}-${service}`.replace(/\s+/g, '-').toLowerCase();
+            html += `
+                    <div class="col-md-3">
+                        <div id="${id}" class="card h-100 shadow-sm clickable-card"
+                             onclick="toggleService('${domain}', '${service}', '${id}')">
+                            <div class="card-body text-center">${service}</div>
+                        </div>
+                    </div>`;
+        });
+        html += '</div>';
+
+        section.innerHTML = html;
+        container.appendChild(section);
+    }
+
+    function toggleService(domain, service, elementId) {
+        const fullId = domain + "::" + service;
+        const index = selectedServices.indexOf(fullId);
+        const card = document.getElementById(elementId);
+
+        if (index === -1) {
+            selectedServices.push(fullId);
+            card.classList.add("selected-card");
+        } else {
+            selectedServices.splice(index, 1);
+            card.classList.remove("selected-card");
+        }
+
+        updateSummary();
+    }
+
+    function updateSummary() {
+        document.getElementById("domainList").innerHTML = selectedDomains.map(d => `<li>${d}</li>`).join('');
+        document.getElementById("serviceList").innerHTML = selectedServices.map(s => `<li>${s.split("::")[1]}</li>`).join('');
+        document.getElementById("SelectedDomains").value = selectedDomains.join(", ");
+        document.getElementById("SelectedServices").value = selectedServices.map(s => s.split("::")[1]).join(", ");
+    }
+</script>
