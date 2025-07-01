@@ -3,15 +3,53 @@
     ViewData["Title"] = "Contact";
 }
 
+@if (TempData["SuccessMessage"] != null)
+{
+        <div id="flashMessage" class="custom-flash success">@TempData["SuccessMessage"]</div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+        <div id="flashMessage" class="custom-flash error">@TempData["ErrorMessage"]</div>
+}
+
+<script>
+    setTimeout(function () {
+        const msg = document.getElementById('flashMessage');
+        if (msg) {
+            msg.style.opacity = '0';
+            setTimeout(() => msg.remove(), 600);
+        }
+    }, 3000);
+</script>
+
+<style>
+    .custom-flash {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px 40px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        color: white;
+        z-index: 9999;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.6s ease-in-out;
+    }
+
+    .custom-flash.success {
+        background-color: rgba(40, 167, 69, 0.92); /* Vert Bootstrap */
+    }
+
+    .custom-flash.error {
+        background-color: rgba(220, 53, 69, 0.92); /* Rouge Bootstrap */
+    }
+</style>
+
 <section class="contact py-5">
     <div class="container">
         <h1 class="text-center mb-5">Contactez-nous</h1>
-
-        @if (TempData["Message"] != null)
-        {
-            <div class="alert alert-success">@TempData["Message"]</div>
-        }
-
 
         <form asp-action="Contact" method="post" class="mx-auto" style="max-width:600px">
             <div class="mb-3">

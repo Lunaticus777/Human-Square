@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Human_Evolution.Models.ServicesContactViewModel
+
+@{
     ViewData["Title"] = "Services & Formations - Orientation";
 }
 
@@ -111,6 +113,16 @@
 <!-- Formulaire de contact -->
 <div class="container py-5">
     <h3 class="text-center mb-4">Votre sélection</h3>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    else if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
     <div class="alert alert-light border">
         <strong>Domaines sélectionnés :</strong>
         <ul id="domainList"></ul>
@@ -118,7 +130,7 @@
         <ul id="serviceList"></ul>
     </div>
 
-    <form class="row g-3">
+    <form asp-action="ServicesContact" method="post" class="row g-3">
         <input type="hidden" name="SelectedDomains" id="SelectedDomains" />
         <input type="hidden" name="SelectedServices" id="SelectedServices" />
 
