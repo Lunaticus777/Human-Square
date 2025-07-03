@@ -17,11 +17,14 @@ namespace Human_Evolution.Models
         [Display(Name = "Téléphone")]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Veuillez sélectionner un besoin.")]
         [Display(Name = "Votre besoin")]
-        public string ServiceType { get; set; }
+        public string ServiceType { get; set; } // ← utilisé pour stocker les prestations sélectionnées
 
         [Display(Name = "Message complémentaire")]
         public string Message { get; set; }
+
+        // ✅ Ajoute ce champ pour que le formulaire puisse le binder
+        [Display(Name = "Domaines sélectionnés")]
+        public string SelectedDomains { get; set; }
     }
 }

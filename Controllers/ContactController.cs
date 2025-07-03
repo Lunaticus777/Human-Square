@@ -1,51 +1,51 @@
 ﻿using Human_Evolution.Models;
+using Human_Evolution.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using System.Net;
-using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace Human_Evolution.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly SmtpSettings _smtpSettings;
+        private readonly MailService _mailService;
 
-        public ContactController(IOptions<SmtpSettings> smtpSettings)
+        public ContactController(MailService mailService)
         {
-            _smtpSettings = smtpSettings.Value;
+            _mailService = mailService;
+        }
+
+        [HttpGet]
+        public IActionResult Contact()
+        {
+            return View(new ContactViewModel()); // charge /Views/Contact/Contact.cshtml
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> SendMessage(ContactViewModel model)
         {
             if (!ModelState.IsValid)
-                return BadRequest();
+            {
+                TempData["ErrorMessage"] = "Veuillez remplir tous les champs correctement.";
+                return View("Contact", model);
+            }
 
             try
             {
-                var mail = new MailMessage
-                {
-                    From = new MailAddress(_smtpSettings.From),
-                    Subject = "Message depuis le site Human Square",
-                    Body = $"Nom: {model.Name}\nEmail: {model.Email}\nMessage:\n{model.Message}",
-                    IsBodyHtml = false
-                };
+                string subject = "Message depuis le site Human Square";
+                string body = $"<strong>Nom :</strong> {model.Name}<br/>" +
+                              $"<strong>Email :</strong> {model.Email}<br/>" +
+                              $"<strong>Message :</strong><br/>{model.Message}";
 
-                mail.To.Add(_smtpSettings.To);
+                await _mailService.SendEmailAsync(subject, body, model.Email);
 
-                using (var smtp = new SmtpClient(_smtpSettings.Host, _smtpSettings.Port))
-                {
-                    smtp.Credentials = new NetworkCredential(_smtpSettings.User, _smtpSettings.Password);
-                    smtp.EnableSsl = _smtpSettings.EnableSsl;
-                    await smtp.SendMailAsync(mail);
-                }
-
-                return Ok();
+                TempData["SuccessMessage"] = "Votre message a été envoyé avec succès.";
+                return RedirectToAction("Contact");
             }
-            catch
+            catch (Exception ex)
             {
-                return StatusCode(500, "Erreur lors de l’envoi");
+                TempData["ErrorMessage"] = "Erreur lors de l'envoi : " + ex.Message;
+                return RedirectToAction("Contact");
             }
         }
     }

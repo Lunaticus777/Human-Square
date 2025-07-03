@@ -304,3 +304,11 @@ html, body {
     color: white !important;
     border: 2px solid #0056b3;
 }
+
+form#langForm select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+    background-color: #f8f9fa;
+    font-weight: 600;
+}

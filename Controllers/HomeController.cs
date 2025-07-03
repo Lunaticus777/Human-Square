@@ -1,21 +1,23 @@
 ﻿using Human_Evolution.Models;
+using Human_Evolution.Services;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
-using System.Net;
 using System.Net.Mail;
+using System.Net;
 
 namespace Human_Evolution.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly SmtpSettings _smtpSettings;
+        private readonly SmtpSettings _smtp;
 
-        public HomeController(ILogger<HomeController> logger, IOptions<SmtpSettings> smtpSettings)
+        public HomeController(ILogger<HomeController> logger, IOptions<SmtpSettings> smtpOptions)
         {
             _logger = logger;
-            _smtpSettings = smtpSettings.Value;
+            _smtp = smtpOptions.Value;
         }
 
         public IActionResult Index() => View();
@@ -26,54 +28,8 @@ namespace Human_Evolution.Controllers
 
         public IActionResult Projects() => View();
 
-        public IActionResult Contact() => View();
-
-        [HttpPost]
-        public IActionResult Contact(ContactViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var mail = new MailMessage
-                    {
-                        From = new MailAddress(_smtpSettings.From),
-                        Subject = "Nouveau message via le formulaire de contact",
-                        Body = $"Nom : {model.Name}\nEmail : {model.Email}\n\nMessage :\n{model.Message}",
-                        IsBodyHtml = false
-                    };
-
-                    mail.To.Add(_smtpSettings.To);
-
-                    using var smtp = new SmtpClient(_smtpSettings.Host, _smtpSettings.Port)
-                    {
-                        Credentials = new NetworkCredential(_smtpSettings.User, _smtpSettings.Password),
-                        EnableSsl = _smtpSettings.EnableSsl
-                    };
-
-                    smtp.Send(mail);
-
-                    // ✅ Message de succès
-                    TempData["SuccessMessage"] = "Message envoyé avec succès.";
-                    return RedirectToAction("Contact");
-                }
-                catch (Exception ex)
-                {
-                    // ❌ Message d'erreur
-                    TempData["ErrorMessage"] = $"Erreur lors de l'envoi : {ex.Message}";
-                    return RedirectToAction("Contact");
-                }
-            }
-
-            return View(model);
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        // ❌ On retire cette méthode pour ne pas interférer avec ContactController
+        // public IActionResult Contact() => View();
 
         [HttpPost]
         public IActionResult ServicesContact(ServicesContactViewModel model)
@@ -86,20 +42,21 @@ namespace Human_Evolution.Controllers
 
                     var mail = new MailMessage
                     {
-                        From = new MailAddress(_smtpSettings.From),
+                        From = new MailAddress(_smtp.From),
                         Subject = "Demande via Services & Formations",
                         Body = body,
                         IsBodyHtml = false
                     };
-                    mail.To.Add(_smtpSettings.To);
 
-                    using var smtp = new SmtpClient(_smtpSettings.Host, _smtpSettings.Port)
+                    mail.To.Add("admin@human-square.com");
+
+                    using var smtpClient = new SmtpClient(_smtp.Host, _smtp.Port)
                     {
-                        Credentials = new NetworkCredential(_smtpSettings.User, _smtpSettings.Password),
-                        EnableSsl = _smtpSettings.EnableSsl
+                        Credentials = new NetworkCredential(_smtp.User, _smtp.Password),
+                        EnableSsl = _smtp.EnableSsl
                     };
 
-                    smtp.Send(mail);
+                    smtpClient.Send(mail);
                     TempData["SuccessMessage"] = "Votre message a bien été envoyé.";
                 }
                 catch (Exception ex)
@@ -111,5 +68,22 @@ namespace Human_Evolution.Controllers
             return RedirectToAction("Services");
         }
 
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl = null)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+
+            return LocalRedirect(returnUrl ?? "/");
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }

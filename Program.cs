@@ -1,21 +1,42 @@
 ﻿using Human_Evolution.Data;
+using Human_Evolution.Services;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔐 Config SMTP (à placer ici AVANT Build)
-builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+// 🌐 Localisation
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-// 📦 Connexion à SQLite (ou autre BDD)
+var supportedCultures = new[] { new CultureInfo("fr"), new CultureInfo("pt") };
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new RequestCulture("fr");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+});
+
+// 🔐 SMTP
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+builder.Services.AddTransient<MailService>();
+
+// 🗄️ Base de données
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// MVC
-builder.Services.AddControllersWithViews();
+// 🧱 MVC + Localisation des vues
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization()
+    .AddDataAnnotationsLocalization();
 
 var app = builder.Build();
 
-// 🔧 Pipeline HTTP
+// 🌍 Localisation activée
+app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -23,22 +44,25 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(new StaticFileOptions
-{
-    OnPrepareResponse = ctx =>
-    {
-        ctx.Context.Response.Headers.Append("Cache-Control", "no-cache, no-store, must-revalidate");
-        ctx.Context.Response.Headers.Append("Pragma", "no-cache");
-        ctx.Context.Response.Headers.Append("Expires", "0");
-    }
-});
+app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthorization();
 
-// Routing
+// ✅ ROUTE personnalisée pour /contact
+app.MapControllerRoute(
+    name: "contact",
+    pattern: "contact",
+    defaults: new { controller = "Contact", action = "Contact" });
+
+// ✅ ROUTE par défaut
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+builder.Services.Configure<SmtpSettings>(
+    builder.Configuration.GetSection("SmtpSettings"));
+
+builder.Services.AddTransient<MailService>();

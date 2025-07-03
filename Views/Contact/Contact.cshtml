@@ -39,11 +39,11 @@ else if (TempData["ErrorMessage"] != null)
     }
 
     .custom-flash.success {
-        background-color: rgba(40, 167, 69, 0.92); /* Vert Bootstrap */
+        background-color: rgba(40, 167, 69, 0.92);
     }
 
     .custom-flash.error {
-        background-color: rgba(220, 53, 69, 0.92); /* Rouge Bootstrap */
+        background-color: rgba(220, 53, 69, 0.92);
     }
 </style>
 
@@ -51,7 +51,9 @@ else if (TempData["ErrorMessage"] != null)
     <div class="container">
         <h1 class="text-center mb-5">Contactez-nous</h1>
 
-        <form asp-action="Contact" method="post" class="mx-auto" style="max-width:600px">
+        <form asp-controller="Contact" asp-action="SendMessage" method="post" class="mx-auto" style="max-width:600px">
+            @Html.AntiForgeryToken()
+
             <div class="mb-3">
                 <label asp-for="Name" class="form-label">Nom</label>
                 <input asp-for="Name" class="form-control" />
@@ -69,11 +71,27 @@ else if (TempData["ErrorMessage"] != null)
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
+
+        <p class="text-muted mt-4">
+            <strong>Nous sommes implantés dans plusieurs régions stratégiques du Portugal :</strong> Vila do Conde, Porto, Lisbonne, Viseu et Albufeira.
+
+            Nos bureaux sont à Av. Gen. Humberto Delgado 115, 4480-905 Vila do Conde.
+        </p>
     </div>
-
-<p class="text-muted mt-4">
-    <strong>Nous sommes implantés dans plusieurs régions stratégiques du Portugal :</strong> Porto, Lisbonne, Viseu et Albufeira. 
-    Cette présence locale nous permet de rester au plus près de votre projet, quel que soit son emplacement, et de vous offrir une connaissance fine du marché.
-</p>
-
 </section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    setTimeout(function () {
+        const msg = document.getElementById('flashMessage');
+        if (msg) {
+            msg.style.opacity = '0';
+            setTimeout(() => {
+                msg.remove(); // ✅ sans eval
+            }, 600);
+        }
+    }, 3000);
+</script>
