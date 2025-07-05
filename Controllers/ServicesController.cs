@@ -24,7 +24,7 @@ namespace Human_Evolution.Controllers
         }
 
         // Vue Services complète
-        public IActionResult Services()
+        public IActionResult Index()
         {
             return View();
         }

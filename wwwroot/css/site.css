@@ -312,3 +312,110 @@ form#langForm select {
     background-color: #f8f9fa;
     font-weight: 600;
 }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 0;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+.premium-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform .3s, box-shadow .3s;
+}
+
+    .premium-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .premium-card .card-label {
+        margin-top: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        padding: 6px 16px;
+        border: 1px solid #333;
+        border-radius: 50px;
+    }
+.badge {
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: rgba(0,0,0,0.03);
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+    .badge:hover {
+        background-color: #000;
+        color: #fff;
+    }
+.custom-badge {
+    font-size: 0.85rem;
+    font-weight: 500;
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #ced4da;
+    padding: 6px 12px;
+    border-radius: 50px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+}
+
+    .custom-badge:hover {
+        background-color: #212529;
+        color: #fff;
+        border-color: #212529;
+    }
+.custom-badge {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    border-radius: 50px;
+    white-space: nowrap;
+    transition: all 0.3s ease-in-out;
+}
+
+    .custom-badge:hover {
+        background-color: #212529;
+        color: #fff;
+        border-color: #212529;
+    }
+.carousel-control-prev,
+.carousel-control-next {
+    width: 3rem;
+    height: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* fond sombre visible */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 1.2rem 1.2rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    filter: invert(1) brightness(2); /* blanc très visible */
+}

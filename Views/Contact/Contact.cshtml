@@ -49,9 +49,9 @@ else if (TempData["ErrorMessage"] != null)
 
 <section class="contact py-5">
     <div class="container">
-        <h1 class="text-center mb-5">Contactez-nous</h1>
+        <h1 class="text-center mb-5 fw-bold text-dark">Contactez-nous</h1>
 
-        <form asp-controller="Contact" asp-action="SendMessage" method="post" class="mx-auto" style="max-width:600px">
+        <form asp-controller="Contact" asp-action="SendMessage" method="post" class="mx-auto bg-white shadow rounded-4 p-4 border" style="max-width:600px">
             @Html.AntiForgeryToken()
 
             <div class="mb-3">
@@ -69,13 +69,14 @@ else if (TempData["ErrorMessage"] != null)
                 <textarea asp-for="Message" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Message" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <button type="submit" class="btn btn-warning w-100 py-2 fw-semibold rounded-pill shadow-sm">
+                Envoyer
+            </button>
         </form>
 
-        <p class="text-muted mt-4">
-            <strong>Nous sommes implantés dans plusieurs régions stratégiques du Portugal :</strong> Vila do Conde, Porto, Lisbonne, Viseu et Albufeira.
-
-            Nos bureaux sont à Av. Gen. Humberto Delgado 115, 4480-905 Vila do Conde.
+        <p class="text-muted mt-4 text-center small">
+            <strong>Présence nationale :</strong> Vila do Conde, Porto, Lisbonne, Viseu et Albufeira.<br />
+            📍 <em>Av. Gen. Humberto Delgado 115, 4480-905 Vila do Conde</em>
         </p>
     </div>
 </section>

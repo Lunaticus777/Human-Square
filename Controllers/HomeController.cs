@@ -28,8 +28,11 @@ namespace Human_Evolution.Controllers
 
         public IActionResult Projects() => View();
 
-        // ❌ On retire cette méthode pour ne pas interférer avec ContactController
-        // public IActionResult Contact() => View();
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public IActionResult ServicesContact(ServicesContactViewModel model)

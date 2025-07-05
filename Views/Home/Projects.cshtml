@@ -7,46 +7,361 @@
         <h1 class="text-center mb-5">Projets accompagnés</h1>
 
         <div class="row">
+            <!-- 7 villas à Esposende -->
             <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="~/images/project01.png" class="card-img-top" alt="Projet 1">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                    <img src="~/images/project01.png" class="card-img-top" alt="Projet villas Esposende">
                     <div class="card-body">
-                        <h5 class="card-title">Développement & Construction de 7 villas</h5>
-                        <p class="card-text">Accompagnement complet d’un client pour son projet de 7 villas à proximité de Esposende.</p>
+                        <h5 class="card-title fw-bold mb-3">7 Villas à Esposende</h5>
+                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalProjet1">
+                            Plus de détails
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <!-- 📦 Carte 10 villas à Albufeira -->
             <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="~/images/project02.png" class="card-img-top" alt="Projet 2">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                    <img src="~/images/project02.png" class="card-img-top" alt="10 Villas à Albufeira">
                     <div class="card-body">
-                        <h5 class="card-title">Développement & Construction de 10 villas</h5>
-                        <p class="card-text">Accompagnement complet d’un client pour son projet de 10 villas à Albufeira.</p>
+                        <h5 class="card-title fw-bold mb-3">10 Villas à Albufeira</h5>
+                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalProjet2">
+                            Plus de détails
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <!-- 🏡 Villa à Barcelos -->
             <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="~/images/project03.png" class="card-img-top" alt="Projet 3">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                    <img src="~/images/project03.png" class="card-img-top" alt="Villa à Barcelos">
                     <div class="card-body">
-                        <h5 class="card-title">Développement & Construction d'une villa</h5>
-                        <p class="card-text">Accompagnement complet d’un client pour son projet de reconstruction d'une ruine à Barcelos.</p>
+                        <h5 class="card-title fw-bold mb-3">Villa à Esposende</h5>
+                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalProjet3">
+                            Plus de détails
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- 🔥 Nouveau projet ajouté ici -->
+            <!-- 📦 Carte 6 villas à Viseu -->
             <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="~/images/project04.png" class="card-img-top" alt="Projet 4">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                    <img src="~/images/project04.jpg" class="card-img-top" alt="6 villas à Viseu">
                     <div class="card-body">
-                        <h5 class="card-title">Projet d’immeuble multifamilial</h5>
-                        <p class="card-text">Étude de faisabilité, montage financier et accompagnement d’un projet d’immeuble résidentiel à Vila do Conde.</p>
+                        <h5 class="card-title fw-bold mb-3">6 Villas à Viseu</h5>
+                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalProjet5">
+                            Plus de détails
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🏠 Carte 1 villa à Vila do Conde -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                    <img src="~/images/project05.jpg" class="card-img-top" alt="1 villa à Vila do Conde">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold mb-3">1 villa à Vila do Conde</h5>
+                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalProjet6">
+                            Plus de détails
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Modale améliorée -->
+<div class="modal fade" id="modalProjet1" tabindex="-1" aria-labelledby="modalProjet1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content custom-modal">
+            <!-- En-tête -->
+            <div class="modal-header border-0">
+                <h4 class="modal-title fw-bold" id="modalProjet1Label">7 Villas à Esposende</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row gx-3 mb-4">
+                    <div class="col-md-6">
+                        <!-- Galerie interactive -->
+                        <div id="carouselProjet1" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded shadow-sm">
+                                <div class="carousel-item active">
+                                    <img src="~/images/project01.png" class="d-block w-100" alt="Vue 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project01b.png" class="d-block w-100" alt="Vue 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project01c.png" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project01d.png" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project01e.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project01f.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet1" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet1" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <p class="fs-5 text-dark mb-4">
+                            Un projet qui est actuellement en construction.
+                        </p>
+                        <h5 class="fw-semibold mb-3">Prestations de conseil:</h5>
+                        <ul class="list-unstyled">
+                            <li class="fw-medium mb-2">✅ Identification de terrain</li>
+                            <li class="fw-medium mb-2">✅ Étude de faisabilité</li>
+                            <li class="fw-medium mb-2">✅ Développement architectural</li>
+                            <li class="fw-medium mb-2">✅ Stratégie de commercialisation</li>
+                            <li class="fw-medium mb-2">✅ Recherche d'un fiancement</li>
+                            <li class="fw-medium mb-2">✅ Coordination des entreprises</li>
+                            <li class="fw-medium mb-2">✅ Suivi de chantier</li>
+                            <li class="fw-medium mb-2">✅ Remise des clés</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 💬 Modale 10 Villas à Albufeira -->
+<div class="modal fade" id="modalProjet2" tabindex="-1" aria-labelledby="modalProjet2Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content custom-modal">
+            <div class="modal-header border-0">
+                <h4 class="modal-title fw-bold" id="modalProjet2Label">10 Villas à Albufeira</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row gx-4 gy-3">
+                    <!-- Galerie d'images -->
+                    <div class="col-md-6">
+                        <div id="carouselProjet2" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded shadow-sm">
+                                <div class="carousel-item active">
+                                    <img src="~/images/project02.png" class="d-block w-100" alt="Vue 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project02b.png" class="d-block w-100" alt="Vue 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project02c.png" class="d-block w-100" alt="Vue 3">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet2" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet2" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Prestations -->
+                    <div class="col-md-6">
+                        <p class="fs-5 text-dark mb-4">
+                            Projet complet de développement immobilier à Albufeira : 10 villas avec accompagnement stratégique.
+                        </p>
+                        <h5 class="fw-semibold mb-3">Prestations apportées :</h5>
+                        <ul class="list-unstyled">
+                            <li class="fw-medium mb-2">✅ Identification de projet</li>
+                            <li class="fw-medium mb-2">✅ Étude de faisabilité</li>
+                            <li class="fw-medium mb-2">✅ Recherche de financement</li>
+                            <li class="fw-medium mb-2">✅ Stratégie de vente</li>
+                            <li class="fw-medium mb-2">✅ Sélection et appel d’offres des entreprises</li>
+                            <li class="fw-medium mb-2">✅ Suivi de chantier</li>
+                            <li class="fw-medium mb-2">✅ Livraison client </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 💬 Modale -->
+<div class="modal fade" id="modalProjet3" tabindex="-1" aria-labelledby="modalProjet3Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content custom-modal">
+            <div class="modal-header border-0">
+                <h4 class="modal-title fw-bold" id="modalProjet3Label">Villa à Barcelos</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row gx-4 gy-3">
+                    <div class="col-md-6">
+                        <div id="carouselProjet3" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded shadow-sm">
+                                <div class="carousel-item active">
+                                    <img src="~/images/project03.png" class="d-block w-100" alt="Vue 1">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet3" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet3" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="fs-5 text-dark mb-4">
+                            Projet de reconstruction d'une ruine dans un village près de Barcelos, avec accompagnement global.
+                        </p>
+                        <h5 class="fw-semibold mb-3">Prestations apportées :</h5>
+                        <ul class="list-unstyled">
+                            <li class="fw-medium mb-2">✅ Analyse du bâti existant</li>
+                            <li class="fw-medium mb-2">✅ Étude de faisabilité technique</li>
+                            <li class="fw-medium mb-2">✅ Coordination architecturale</li>
+                            <li class="fw-medium mb-2">✅ Sélection des artisans locaux</li>
+                            <li class="fw-medium mb-2">✅ Suivi de chantier</li>
+                            <li class="fw-medium mb-2">✅ Livraison au client</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 💬 Modale 6 Villas à Viseu -->
+<div class="modal fade" id="modalProjet5" tabindex="-1" aria-labelledby="modalProjet5Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content custom-modal">
+            <div class="modal-header border-0">
+                <h4 class="modal-title fw-bold" id="modalProjet5Label">6 Villas à Viseu</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row gx-4 gy-3">
+                    <!-- Galerie d'images -->
+                    <div class="col-md-6">
+                        <div id="carouselProjet5" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded shadow-sm">
+                                <div class="carousel-item active">
+                                    <img src="~/images/project04.jpg" class="d-block w-100" alt="Vue 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project04b.jpg" class="d-block w-100" alt="Vue 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project04c.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project04d.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project04e.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project04f.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project04g.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet5" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet5" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Prestations -->
+                    <div class="col-md-6">
+                        <p class="fs-5 text-dark mb-4">
+                            Accompagnement global d’un projet de 6 villas à Viseu : étude, stratégie, suivi.
+                        </p>
+                        <h5 class="fw-semibold mb-3">Prestations apportées :</h5>
+                        <ul class="list-unstyled">
+                            <li class="fw-medium mb-2">✅ Étude de faisabilité complète</li>
+                            <li class="fw-medium mb-2">✅ Recherche foncière et analyse urbanistique</li>
+                            <li class="fw-medium mb-2">✅ Montage financier et prévisionnel</li>
+                            <li class="fw-medium mb-2">✅ Coordination avec l’architecte</li>
+                            <li class="fw-medium mb-2">✅ Suivi des démarches administratives</li>
+                            <li class="fw-medium mb-2">✅ Lancement du chantier & coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 💬 Modale -->
+<div class="modal fade" id="modalProjet6" tabindex="-1" aria-labelledby="modalProjet6Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content custom-modal">
+            <div class="modal-header border-0">
+                <h4 class="modal-title fw-bold" id="modalProjet6Label">1 villa à Vila do Conde</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row gx-4 gy-3">
+                    <!-- Galerie d'images -->
+                    <div class="col-md-6">
+                        <div id="carouselProjet6" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded shadow-sm">
+                                <div class="carousel-item active">
+                                    <img src="~/images/project05.jpg" class="d-block w-100" alt="Vue 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project05b.jpg" class="d-block w-100" alt="Vue 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project05c.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project05d.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="~/images/project05e.jpg" class="d-block w-100" alt="Vue 3">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet6" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet6" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Prestations -->
+                    <div class="col-md-6">
+                        <p class="fs-5 text-dark mb-4">
+                            Projet individuel de rénovation-extension d'une villa à Vila do Conde. Accompagnement global du client.
+                        </p>
+                        <h5 class="fw-semibold mb-3">Prestations apportées :</h5>
+                        <ul class="list-unstyled">
+                            <li class="fw-medium mb-2">✅ Relevé et analyse du bien existant</li>
+                            <li class="fw-medium mb-2">✅ Étude de faisabilité & conception</li>
+                            <li class="fw-medium mb-2">✅ Budget & planification</li>
+                            <li class="fw-medium mb-2">✅ Suivi du permis et autorisations</li>
+                            <li class="fw-medium mb-2">✅ Appel d’offres artisans</li>
+                            <li class="fw-medium mb-2">✅ Suivi du chantier jusqu'à la remise</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

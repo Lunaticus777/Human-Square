@@ -1,0 +1,1873 @@
+﻿@{
+    ViewData["Title"] = "Nos Services";
+}
+
+
+<!-- SECTION SERVICES AVEC SIDEBAR INTERACTIVE ET CONTENU ACTUEL -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+                        <!-- TOP MODERN SERVICE BAR -->
+            <style>
+                .service-navbar {
+                    background: linear-gradient(90deg, #ffffff, #f9f9f9);
+                    border-radius: 1.5rem;
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+                    padding: 1rem 2rem;
+                    margin-bottom: 2rem;
+                    position: sticky;
+                    top: 1rem;
+                    z-index: 1000;
+                    transition: background 0.3s ease;
+                }
+
+                    .service-navbar .nav-item {
+                        transition: all 0.3s ease;
+                        border-radius: 2rem;
+                        padding: 0.5rem 1.25rem;
+                        font-weight: 500;
+                        background-color: #f0f2f5;
+                        color: #444;
+                        border: none;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+                    }
+
+                        .service-navbar .nav-item:hover,
+                        .service-navbar .nav-item.active {
+                            background-color: #c9a227;
+                            color: white;
+                            box-shadow: 0 6px 14px rgba(201, 162, 39, 0.3);
+                            transform: translateY(-1px);
+                        }
+
+                    .service-navbar .nav-contact {
+                        border-radius: 2rem;
+                        font-weight: 600;
+                        padding: 0.5rem 1.5rem;
+                        background: linear-gradient(to right, #0d6efd, #3a86ff);
+                        color: white;
+                        border: none;
+                        transition: 0.3s;
+                        box-shadow: 0 4px 12px rgba(13, 110, 253, 0.25);
+                    }
+
+                        .service-navbar .nav-contact:hover {
+                            background: #0b5ed7;
+                            box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+                            transform: scale(1.03);
+                        }
+
+                @@media (max-width: 768px) {
+                    .service-navbar {
+                        padding: 1rem;
+                        text-align: center;
+                    }
+
+                        .service-navbar .d-flex {
+                            flex-direction: column;
+                            gap: 0.75rem;
+                        }
+                }
+            </style>
+
+
+            <nav class="service-navbar">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <span class="fw-bold text-secondary me-3">🌟 Nos Prestations :</span>
+
+                        <button type="button" class="nav-item" onclick="showSection('coaching')">💼 Coaching</button>
+                        <button type="button" class="nav-item" onclick="showSection('consulting')">📊 Consulting</button>
+                        <button type="button" class="nav-item" onclick="showSection('audit')">🔍 Audit</button>
+                        <button type="button" class="nav-item" onclick="showSection('formation')">🎓 Formation</button>
+                    </div>
+
+                    <div>
+                        <a asp-controller="Contact" asp-action="Contact" class="nav-contact text-decoration-none">✉️ Contact</a>
+                    </div>
+                </div>
+            </nav>
+
+
+
+            <!-- CONTENU PRINCIPAL AVEC ANCRES -->
+            <div class="container-fluid px-4">
+                <h1 class="text-center mb-5"></h1>
+
+                <!-- Service 1 -->
+                <div id="coaching" class="service-section d-none">
+                    <h3 class="mb-4">Coaching Professionnel</h3>
+                    <p class="text-muted">Une démarche de transformation puissante, alignée avec qui vous êtes et ce que vous voulez vraiment.</p>
+
+                    <div class="row g-4">
+                        <!-- Coaching immobilier -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-primary">
+                                <div class="card-body">
+                                    <h5 class="card-title">Immobilier</h5>
+                                    <p class="card-text small text-muted">
+                                        Structuration de votre stratégie d’investissement, vision à long terme, priorisation des opportunités et gestion des risques.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#coachingImmobilierModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coaching business -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-success">
+                                <div class="card-body">
+                                    <h5 class="card-title">Business</h5>
+                                    <p class="card-text small text-muted">
+                                        Développement de votre offre, posture entrepreneuriale, pilotage stratégique et équilibre entre ambition et faisabilité.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#coachingBusinessModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coaching mindset -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-warning">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mindset</h5>
+                                    <p class="card-text small text-muted">
+                                        Recentrage, confiance dans la décision, clarté mentale pour avancer avec cohérence, même en période d’incertitude.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#coachingMindsetModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coaching carrière / reconversion -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-danger">
+                                <div class="card-body">
+                                    <h5 class="card-title">Transition</h5>
+                                    <p class="card-text small text-muted">
+                                        Orientation stratégique, repositionnement professionnel ou lancement d’une nouvelle activité avec impact.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#coachingTransitionModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DÉFINITION COACHING ICF -->
+                    <section class="py-5" style="background-color: #f8f9fa;">
+                        <div class="container-fluid">
+                            <div class="mx-auto" style="max-width: 1140px;">
+
+                                <div class="text-center mb-5">
+                                    <h2 class="display-15 fw-bold" style="color: #1a1a1a;">Qu'est-ce que le Coaching peut vous apporter ?</h2>
+                                </div>
+
+                                <div class="bg-white border-start border-4 rounded-4 p-4 mb-5 shadow-sm" style="border-color: #c9a227;">
+                                    <p class="mb-0 fs-6 text-dark text-center">
+                                        Le coaching ICF repose sur une posture exigeante et bienveillante, respectueuse de votre autonomie
+                                        et structurée selon les standards de l’<strong>International Coaching Federation</strong>, la référence mondiale du coaching professionnel.
+                                    </p>
+                                </div>
+
+                                <div class="row g-4 mb-5">
+                                    <div class="col-md-6">
+                                        <div class="bg-white rounded-4 border-start border-4 p-4 h-100 shadow-sm" style="border-color: #c9a227;">
+                                            <h5 class="fw-semibold text-dark mb-3">🎯Pourquoi faire appel à un coach ICF ?</h5>
+                                            <ul class="list-unstyled small text-muted mb-0">
+                                                <li class="mb-2">• Clarifier une direction ou un changement professionnel</li>
+                                                <li class="mb-2">• Développer sa posture de leader ou d’entrepreneur</li>
+                                                <li class="mb-2">• Surmonter un blocage ou une difficulté persistante</li>
+                                                <li class="mb-2">• Réussir une transition ou une reconversion</li>
+                                                <li>• Aligner ambition, sens et action</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="bg-white rounded-4 border-start border-4 p-4 h-100 shadow-sm" style="border-color: #c9a227;">
+                                            <h5 class="fw-semibold text-dark mb-3">✅ Ce que vous y trouverez</h5>
+                                            <ul class="list-unstyled small text-muted mb-4">
+                                                <li class="mb-2">• Une écoute active, neutre et puissante</li>
+                                                <li class="mb-2">• Des questions qui font émerger vos propres solutions</li>
+                                                <li class="mb-2">• Un cadre sécurisé et confidentiel</li>
+                                                <li>• Une meilleure clarté, cohérence et efficacité personnelle</li>
+                                            </ul>
+                                            <h6 class="fw-semibold text-dark mb-2">🚫 Ce que le coaching ICF n’est pas</h6>
+                                            <ul class="list-unstyled small text-muted">
+                                                <li>– Pas de conseils tout faits</li>
+                                                <li>– Pas de recettes miracles</li>
+                                                <li>– Pas de dépendance au coach</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <blockquote class="blockquote fs-5 fst-italic text-muted">
+                                        « Un partenariat stratégique et humain pour avancer avec clarté, confiance et impact. »
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <div id="consulting" class="service-section d-none">
+                    <h3 class="mb-4">Consulting Stratégique</h3>
+                    <p class="text-muted">Un accompagnement ciblé selon le type de projet, le profil et les objectifs de chaque client.</p>
+
+                    <div class="row g-4">
+                        <!-- Consulting immobilier -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-primary">
+                                <div class="card-body">
+                                    <h5 class="card-title">Immobilier</h5>
+                                    <p class="card-text small text-muted">
+                                        Étude de faisabilité, projection budgétaire, choix de structuration juridique et fiscale, analyse du marché et montage opérationnel.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#consultingImmobilierModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consulting entreprises -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-success">
+                                <div class="card-body">
+                                    <h5 class="card-title">Entreprises</h5>
+                                    <p class="card-text small text-muted">
+                                        Positionnement stratégique, développement de l’offre, structuration interne et accompagnement dans la croissance ou la transformation.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#consultingEntreprisesModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consulting projets innovants -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-warning">
+                                <div class="card-body">
+                                    <h5 class="card-title">Business</h5>
+                                    <p class="card-text small text-muted">
+                                        De l’idée à la concrétisation : business plan, étude d’opportunité, structuration du projet et accompagnement à la mise en œuvre.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#consultingInnovantsModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consulting finance & optimisation -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-danger">
+                                <div class="card-body">
+                                    <h5 class="card-title">Finances</h5>
+                                    <p class="card-text small text-muted">
+                                        Optimisation des flux, recherche de financement, structuration d’investissement, stratégie de rendement et gestion des risques.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#consultingFinancesModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="audit" class="service-section d-none">
+                    <h3 class="mb-4">Audit & Optimisation</h3>
+                    <p class="text-muted">Nous identifions les leviers de performance à chaque étape de votre projet.</p>
+
+                    <div class="row g-4">
+                        <!-- Audit immobilier -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-primary">
+                                <div class="card-body">
+                                    <h5 class="card-title">Immobilier</h5>
+                                    <p class="card-text small text-muted">
+                                        Vérification du potentiel constructible, évaluation du coût/valeur, analyse de la rentabilité et risques liés à la zone ou aux procédures locales.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#auditImmobilierModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audit entreprises -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-success">
+                                <div class="card-body">
+                                    <h5 class="card-title">Entreprises</h5>
+                                    <p class="card-text small text-muted">
+                                        Évaluation stratégique d’une activité, repositionnement, identification de leviers de croissance ou de restructuration.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#auditEntreprisesModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audit finances -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-warning">
+                                <div class="card-body">
+                                    <h5 class="card-title">Finances</h5>
+                                    <p class="card-text small text-muted">
+                                        Analyse des coûts, marges, flux de trésorerie, structuration financière, et mise en place de solutions d’optimisation adaptées.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#auditFinancesModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audit projets divers -->
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-start border-4 border-secondary">
+                                <div class="card-body">
+                                    <h5 class="card-title">Projets</h5>
+                                    <p class="card-text small text-muted">
+                                        Revue complète d’un projet en amont ou en cours : cohérence, faisabilité, partenaires, calendrier et indicateurs de pilotage.
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#auditProjetsModal">
+                                        En savoir plus
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="formation" class="service-section d-none">
+                    <h3 class="mb-4">Formations Human Square</h3>
+                    <p class="text-muted">Développez vos compétences et sécurisez vos projets avec nos formations sur-mesure.</p>
+
+                    <div class="row g-4">
+                    <!-- L'Investisseur Aligné -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-start border-4 border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title">L'Investisseur Aligné</h5>
+                                <p class="card-text small text-muted">
+                                    Accompagnement stratégique 3 à 6 mois pour aligner vos projets immobiliers ou entrepreneuriaux.
+                                </p>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#formationInvestisseurModal">
+                                    En savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Investissement Portugal -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-start border-4 border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">Investissement Portugal</h5>
+                                <p class="card-text small text-muted">
+                                    Sécurisez chaque étape de votre projet immobilier au Portugal, en toute sérénité.
+                                </p>
+                                <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#formationInvestPortugalModal">
+                                    En savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Promotion immobilière -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-start border-4 border-warning">
+                            <div class="card-body">
+                                <h5 class="card-title">Promotion Immobilière</h5>
+                                <p class="card-text small text-muted">
+                                    Devenez promoteur immobilier : faisabilité, financement, chantier et commercialisation.
+                                </p>
+                                <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#formationPromotionModal">
+                                    En savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Entrepreneuriat -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-start border-4 border-danger">
+                            <div class="card-body">
+                                <h5 class="card-title">Entrepreneuriat</h5>
+                                <p class="card-text small text-muted">
+                                    Construisez un business model robuste et prenez des décisions stratégiques alignées.
+                                </p>
+                                <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#formationBusinessModal">
+                                    En savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coaching dirigeants -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-start border-4 border-dark">
+                            <div class="card-body">
+                                <h5 class="card-title">Coaching Dirigeants (ICF)</h5>
+                                <p class="card-text small text-muted">
+                                    Accompagnement premium pour dirigeants : leadership, décisions complexes, équilibre personnel.
+                                </p>
+                                <button class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#formationCoachingDirigeantModal">
+                                    En savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Apporteur d'affaires -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-start border-4 border-info">
+                            <div class="card-body">
+                                <h5 class="card-title">Apporteur d'affaires</h5>
+                                <p class="card-text small text-muted">
+                                    Maîtrisez les techniques pour devenir apporteur d’affaires immobilier haut de gamme.
+                                </p>
+                                <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#formationApporteurModal">
+                                    En savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Consulting immobilier -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-start border-4 border-secondary">
+                            <div class="card-body">
+                                <h5 class="card-title">Consulting Immobilier Premium</h5>
+                                <p class="card-text small text-muted">
+                                    Structurez une activité de consulting immobilier de prestige, éthique et rentable.
+                                </p>
+                                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#formationConsultingModal">
+                                    En savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web3 Immobilier -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-start border-4 border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title">Web3 Immobilier</h5>
+                                <p class="card-text small text-muted">
+                                    Découvrez les nouvelles opportunités du Web3 appliquées à l’immobilier (tokenisation, blockchain, financement participatif).
+                                </p>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#formationWeb3Modal">
+                                    En savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODALE COACHING IMMOBILIER MODERNE -->
+    <div class="modal fade" id="coachingImmobilierModal" tabindex="-1" aria-labelledby="coachingImmobilierLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="coachingImmobilierLabel">Coaching Immobilier</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-primary">Un accompagnement stratégique & humain</h2>
+                        <p class="lead text-muted">
+                            Vous avez un projet immobilier au Portugal ? Faites le grand saut avec clarté, structure et confiance.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Clarifiez vos objectifs</h5>
+                                <p class="text-muted small mb-0">
+                                    Grâce à un <strong>Coaching Professionnel</strong>, nous vous aidons à identifier et clarifier vos objectifs, à structurer votre réflexion et à mettre en place des leviers adaptés à votre personnalité.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Structuration & stratégie</h5>
+                                <p class="text-muted small mb-0">
+                                    Chaque étape est abordée avec méthode : visualisation, alignement interne, levée de blocages, priorisation des actions, jusqu’à une projection cohérente et durable.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Expertise certifiée</h5>
+                                <p class="text-muted small mb-0">
+                                        Human Square s’appuie sur un coach certifié <strong>ICF</strong>, avec plus de <strong>8 ans d’expérience</strong> dans l’accompagnement de dirigeants, d’entrepreneurs et d’investisseurs à fort enjeu.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Une relation humaine</h5>
+                                <p class="text-muted small mb-0">
+                                    Chaque projet est avant tout une rencontre. Nous mettons un point d'honneur à établir une relation sincère, respectueuse et stimulante, pour une transformation profonde et durable.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Coaching & Consulting</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE COACHING BUSINESS -->
+    <div class="modal fade" id="coachingBusinessModal" tabindex="-1" aria-labelledby="coachingBusinessLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="coachingBusinessLabel">Coaching Business</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-success">Un partenaire stratégique pour votre business</h2>
+                        <p class="lead text-muted">
+                            De l’idée au pilotage, construisez une activité alignée, durable et porteuse de sens.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Positionnement & offre</h5>
+                                <p class="text-muted small mb-0">
+                                    Clarification de votre proposition de valeur, étude de la cible, structuration d'une offre cohérente et différenciante.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Vision & stratégie</h5>
+                                <p class="text-muted small mb-0">
+                                    Définition d'une stratégie alignée avec vos aspirations, vos ressources et le marché. Priorisation et feuille de route claire.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Posture entrepreneuriale</h5>
+                                <p class="text-muted small mb-0">
+                                    Accompagnement dans le développement de votre leadership, de votre assertivité et de votre résilience en tant qu'entrepreneur.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Équilibre & impact</h5>
+                                <p class="text-muted small mb-0">
+                                    Trouver un équilibre entre ambition et faisabilité, performance et bien-être, croissance et alignement personnel.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Coaching Business</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE COACHING MINDSET -->
+    <div class="modal fade" id="coachingMindsetModal" tabindex="-1" aria-labelledby="coachingMindsetLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="coachingMindsetLabel">Coaching Mindset</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-warning">Un esprit clair pour des décisions alignées</h2>
+                        <p class="lead text-muted">
+                            Parce qu’un bon projet commence par un bon ancrage intérieur, recentrez-vous pour avancer sereinement.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Recentrage & clarté mentale</h5>
+                                <p class="text-muted small mb-0">
+                                    Se reconnecter à l’essentiel, prendre du recul sur les enjeux, retrouver de la clarté dans la complexité.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Confiance dans la décision</h5>
+                                <p class="text-muted small mb-0">
+                                    Développer une posture intérieure stable pour faire des choix justes, même en contexte incertain.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Équilibre émotionnel</h5>
+                                <p class="text-muted small mb-0">
+                                    Mieux gérer le stress, les doutes et les peurs. Renforcer votre solidité intérieure et votre résilience.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Cohérence personnelle</h5>
+                                <p class="text-muted small mb-0">
+                                    Aligner vos choix professionnels et personnels avec vos valeurs profondes pour une vie plus fluide.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Coaching Mindset</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE COACHING TRANSITION / CARRIÈRE -->
+    <div class="modal fade" id="coachingTransitionModal" tabindex="-1" aria-labelledby="coachingTransitionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="coachingTransitionLabel">Coaching Transition</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-danger">(Re)donnez du sens à votre trajectoire professionnelle</h2>
+                        <p class="lead text-muted">
+                            Transition, reconversion, repositionnement : faites des choix alignés et puissants pour la suite de votre parcours.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Orientation & clarification</h5>
+                                <p class="text-muted small mb-0">
+                                    Mieux comprendre vos besoins, vos forces, vos aspirations, et clarifier les options professionnelles qui vous correspondent.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Repositionnement stratégique</h5>
+                                <p class="text-muted small mb-0">
+                                    Repenser votre positionnement, affiner votre profil professionnel et valoriser votre expérience dans un nouveau cadre.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Lancement d’activité</h5>
+                                <p class="text-muted small mb-0">
+                                    Vous avez une idée ou un rêve en tête ? Nous vous aidons à structurer et sécuriser votre nouveau projet professionnel.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Accompagnement humain</h5>
+                                <p class="text-muted small mb-0">
+                                    Un soutien bienveillant, exigeant et sur-mesure pour avancer pas à pas, avec confiance et alignement.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Coaching Transition</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE CONSULTING IMMOBILIER MODERNE -->
+    <div class="modal fade" id="consultingImmobilierModal" tabindex="-1" aria-labelledby="consultingImmobilierLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="consultingImmobilierLabel">Consulting Immobilier</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-primary">Expertise & accompagnement opérationnel</h2>
+                        <p class="lead text-muted">
+                            Bénéficiez d’un regard expert sur vos projets immobiliers au Portugal, de l’analyse à la concrétisation.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Étude de faisabilité</h5>
+                                <p class="text-muted small mb-0">
+                                    Analyse de votre projet immobilier (terrain, bâtiment, rénovation…) pour valider sa viabilité technique, réglementaire et économique.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Cadre légal & fiscalité</h5>
+                                <p class="text-muted small mb-0">
+                                    Conseil sur les démarches administratives, le choix de la structure juridique, la fiscalité locale et les obligations légales liées à votre investissement.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Planification & pilotage</h5>
+                                <p class="text-muted small mb-0">
+                                    Accompagnement dans la structuration du projet, la sélection des prestataires, la négociation des devis et le suivi du chantier.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Réseau d’experts locaux</h5>
+                                <p class="text-muted small mb-0">
+                                    Accès à un réseau de professionnels de confiance : architectes, juristes, fiscalistes, constructeurs, notaires, pour sécuriser chaque étape.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Consulting Immobilier</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE CONSULTING ENTREPRISES -->
+    <div class="modal fade" id="consultingEntreprisesModal" tabindex="-1" aria-labelledby="consultingEntreprisesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="consultingEntreprisesLabel">Consulting Entreprises</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-success">Déployez votre vision avec impact</h2>
+                        <p class="lead text-muted">
+                            Un accompagnement sur-mesure pour structurer, transformer ou accélérer votre entreprise avec clarté et cohérence.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Positionnement stratégique</h5>
+                                <p class="text-muted small mb-0">
+                                    Clarification de votre ADN d’entreprise, diagnostic global, alignement entre vision, mission et offres.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Structuration & organisation</h5>
+                                <p class="text-muted small mb-0">
+                                    Appui à la structuration des équipes, process internes, management et systèmes pour soutenir votre croissance.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Accompagnement à la transformation</h5>
+                                <p class="text-muted small mb-0">
+                                    Gestion du changement, nouvelles offres, digitalisation, nouvelles gouvernances ou évolutions structurelles.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Accompagnement humain</h5>
+                                <p class="text-muted small mb-0">
+                                    Coaching des dirigeants, dynamique d’équipe, gouvernance participative et culture d’entreprise alignée.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Consulting Entreprises</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE CONSULTING PROJETS INNOVANTS -->
+    <div class="modal fade" id="consultingInnovantsModal" tabindex="-1" aria-labelledby="consultingInnovantsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="consultingInnovantsLabel">Consulting Projets Innovants</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-warning">Faites émerger et réussir votre projet innovant</h2>
+                        <p class="lead text-muted">
+                            Transformez vos idées en réalité grâce à un accompagnement stratégique, structuré et humain.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Clarification & vision</h5>
+                                <p class="text-muted small mb-0">
+                                    Identifier votre valeur ajoutée, affiner votre idée, cadrer votre vision pour bâtir un projet porteur de sens.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Étude d’opportunité & business model</h5>
+                                <p class="text-muted small mb-0">
+                                    Valider la faisabilité de votre projet, étudier le marché, modéliser votre offre et établir votre business plan.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Structuration & plan d’action</h5>
+                                <p class="text-muted small mb-0">
+                                    Définir les étapes clés, les ressources nécessaires, les partenariats et les choix juridiques et financiers adaptés.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Accompagnement à la mise en œuvre</h5>
+                                <p class="text-muted small mb-0">
+                                    Suivi personnalisé pour passer de l’idée à l’action avec confiance, méthode et soutien stratégique à chaque étape.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Consulting Projets Innovants</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE CONSULTING FINANCES -->
+    <div class="modal fade" id="consultingFinancesModal" tabindex="-1" aria-labelledby="consultingFinancesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="consultingFinancesLabel">Consulting Finances</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-danger">Pilotez vos finances avec précision et vision</h2>
+                        <p class="lead text-muted">
+                            Sécurisez et optimisez vos ressources pour soutenir la croissance de vos projets ou de votre entreprise.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Optimisation des flux</h5>
+                                <p class="text-muted small mb-0">
+                                    Analyse de vos flux financiers, réduction des coûts cachés, amélioration de la rentabilité opérationnelle.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Recherche de financement</h5>
+                                <p class="text-muted small mb-0">
+                                    Accompagnement dans la recherche de partenaires financiers, subventions, ou structuration de dossiers bancaires.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Structuration d’investissement</h5>
+                                <p class="text-muted small mb-0">
+                                    Conseil sur le montage juridique et financier d’opérations d’investissement, levées de fonds, ou projets immobiliers.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Gestion des risques</h5>
+                                <p class="text-muted small mb-0">
+                                    Identification des risques financiers, mise en place de dispositifs de sécurisation et d’anticipation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Consulting Finances</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE AUDIT IMMOBILIER -->
+    <div class="modal fade" id="auditImmobilierModal" tabindex="-1" aria-labelledby="auditImmobilierLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="auditImmobilierLabel">Audit Immobilier</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-primary">Sécurisez vos décisions avec un audit complet</h2>
+                        <p class="lead text-muted">
+                            Avant d’acheter ou de lancer un projet, faites analyser le bien, le terrain ou le projet sous tous ses angles.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Potentiel constructible</h5>
+                                <p class="text-muted small mb-0">
+                                    Analyse des règles d’urbanisme, vérification du COS/CERU, faisabilité technique et juridique selon les documents locaux (PDM, RNU...).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Coût vs valeur</h5>
+                                <p class="text-muted small mb-0">
+                                    Estimation précise du coût global d’un projet par rapport à la valeur de marché cible ou attendue du bien finalisé.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Rentabilité du projet</h5>
+                                <p class="text-muted small mb-0">
+                                    Calcul du rendement net, retour sur investissement, scénarios de sortie, points de levier et zones de fragilité.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Risques & contraintes</h5>
+                                <p class="text-muted small mb-0">
+                                    Identification des risques administratifs, techniques, environnementaux ou géographiques pouvant compromettre le projet.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Audit Immobilier</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE AUDIT ENTREPRISES -->
+    <div class="modal fade" id="auditEntreprisesModal" tabindex="-1" aria-labelledby="auditEntreprisesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="auditEntreprisesLabel">Audit Entreprises</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-success">Prenez de la hauteur sur votre activité</h2>
+                        <p class="lead text-muted">
+                            Un regard externe, stratégique et structuré pour identifier les points d’appui et de transformation de votre entreprise.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Diagnostic stratégique</h5>
+                                <p class="text-muted small mb-0">
+                                    Analyse globale de l’entreprise : vision, offres, positionnement, gouvernance, indicateurs et cohérence interne.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Identification des blocages</h5>
+                                <p class="text-muted small mb-0">
+                                    Repérage des freins à la performance ou à la croissance : organisation, communication, offres, rentabilité, RH, etc.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Leviers de croissance</h5>
+                                <p class="text-muted small mb-0">
+                                    Recommandations claires et hiérarchisées pour redynamiser l’activité, innover, structurer ou réorienter.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Accompagnement à la transformation</h5>
+                                <p class="text-muted small mb-0">
+                                    Possibilité de poursuivre par un accompagnement personnalisé pour mettre en œuvre les recommandations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Audit Entreprises</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE AUDIT FINANCES -->
+    <div class="modal fade" id="auditFinancesModal" tabindex="-1" aria-labelledby="auditFinancesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="auditFinancesLabel">Audit Financier</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-warning">Pilotez vos finances avec rigueur et agilité</h2>
+                        <p class="lead text-muted">
+                            Un audit complet pour comprendre, ajuster et renforcer votre modèle financier.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Analyse des flux & marges</h5>
+                                <p class="text-muted small mb-0">
+                                    Évaluation des coûts directs/indirects, des marges opérationnelles, et des points critiques de trésorerie.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Structuration financière</h5>
+                                <p class="text-muted small mb-0">
+                                    Diagnostic des structures de financement, dettes, capitaux propres, et stratégie financière à moyen terme.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Identification des leviers</h5>
+                                <p class="text-muted small mb-0">
+                                    Recommandations concrètes pour améliorer votre performance financière et sécuriser votre rentabilité.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Mise en œuvre d’optimisations</h5>
+                                <p class="text-muted small mb-0">
+                                    Plan d’actions ciblé, priorisé et adapté à votre réalité, avec possibilité d’accompagnement à la mise en œuvre.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Audit Financier</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE AUDIT PROJETS -->
+    <div class="modal fade" id="auditProjetsModal" tabindex="-1" aria-labelledby="auditProjetsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 position-relative">
+                    <h4 class="modal-title fw-bold" id="auditProjetsLabel">Audit de Projet</h4>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+
+                <div class="modal-body p-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold mb-3 text-secondary">Prenez du recul pour mieux avancer</h2>
+                        <p class="lead text-muted">
+                            Une analyse complète pour valider, ajuster ou relancer votre projet dans les meilleures conditions.
+                        </p>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Cohérence globale</h5>
+                                <p class="text-muted small mb-0">
+                                    Vérification de la logique d’ensemble du projet : vision, objectifs, moyens, public cible, impact attendu.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Faisabilité opérationnelle</h5>
+                                <p class="text-muted small mb-0">
+                                    Analyse des ressources disponibles, contraintes, dépendances, et de la capacité à livrer dans les temps.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Partenaires & acteurs clés</h5>
+                                <p class="text-muted small mb-0">
+                                    Identification des parties prenantes, clarification des rôles, recommandations sur la gouvernance et la coordination.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <h5 class="fw-semibold text-secondary">Calendrier & indicateurs</h5>
+                                <p class="text-muted small mb-0">
+                                    Revue des étapes, jalons critiques, indicateurs de pilotage, risques projet et pistes de réajustement.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Human Square – Audit de Projet</small>
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- MODALE investisseur aligné -->
+        <div class="modal fade" id="formationInvestisseurModal" tabindex="-1" aria-labelledby="formationInvestisseurLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header bg-primary text-white border-0 position-relative">
+                        <h4 class="modal-title fw-bold" id="formationInvestisseurLabel">L'Investisseur Aligné</h4>
+                        <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+
+                    <div class="modal-body p-5 bg-light">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-3 text-primary">Allier performance financière et alignement personnel</h2>
+                            <p class="lead text-muted">
+                                Cette formation-accompagnement s’adresse aux investisseurs et entrepreneurs souhaitant bâtir des projets immobiliers solides, cohérents avec leur vision personnelle et durablement sécurisés sur le plan opérationnel et financier.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Clarification des objectifs</h5>
+                                    <p class="text-muted small mb-0">
+                                        Nous vous aidons à poser des objectifs d'investissement clairs et alignés avec vos ressources, vos contraintes et vos ambitions à court, moyen et long terme.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Audit stratégique de votre projet</h5>
+                                    <p class="text-muted small mb-0">
+                                        Étude approfondie de la faisabilité, analyse des scénarios d’investissement, projection financière et identification des risques opérationnels.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Structuration financière et juridique</h5>
+                                    <p class="text-muted small mb-0">
+                                        Sélection du meilleur schéma de structuration (société, holding, dettes privées ou bancaires, fiscalité internationale, transmission).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Accompagnement coaching ICF certifié</h5>
+                                    <p class="text-muted small mb-0">
+                                        Travail en profondeur sur vos leviers de décision, clarification mentale, gestion émotionnelle des enjeux financiers et accompagnement à la prise de décisions stratégiques.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="fw-semibold text-dark mb-3">Ce que vous obtenez :</h5>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>✔ Un plan d’investissement clair, chiffré et sécurisé</li>
+                                <li>✔ Une vision stratégique réaliste et alignée avec votre situation</li>
+                                <li>✔ Un suivi régulier et des ajustements en fonction des étapes</li>
+                                <li>✔ Un coaching personnel de haut niveau pour prendre les bonnes décisions</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Accompagnement personnalisé 3 à 6 mois — À partir de 8.000€</small>
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALE investissement portugal -->
+        <div class="modal fade" id="formationInvestPortugalModal" tabindex="-1" aria-labelledby="formationInvestPortugalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header bg-success text-white border-0 position-relative">
+                        <h4 class="modal-title fw-bold" id="formationInvestPortugalLabel">Investissement Portugal</h4>
+                        <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+
+                    <div class="modal-body p-5 bg-light">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-3 text-success">Investir sereinement au Portugal</h2>
+                            <p class="lead text-muted">
+                                Une formation concrète pour sécuriser votre projet immobilier au Portugal, en évitant les erreurs les plus fréquentes et en optimisant chaque étape du processus.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Identification des zones attractives</h5>
+                                    <p class="text-muted small mb-0">
+                                        Étude des régions et villes selon vos objectifs : rendement locatif, résidence secondaire, valorisation patrimoniale, retraite.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Structuration fiscale et juridique</h5>
+                                    <p class="text-muted small mb-0">
+                                        Optimisation des structures d’achat : achat en direct, SCI, société commerciale, détention transfrontalière, fiscalité des résidents non habituels (RNH).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Risques et sécurisation des contrats</h5>
+                                    <p class="text-muted small mb-0">
+                                        Vérification des documents, négociation du compromis (CPCV), choix du notaire, audit juridique des permis et autorisations.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Pilotage du projet post-acquisition</h5>
+                                    <p class="text-muted small mb-0">
+                                        Gestion des prestataires, rénovations, travaux, location saisonnière ou annuelle, gestion fiscale continue.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="fw-semibold text-dark mb-3">À qui s’adresse cette formation :</h5>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>✔ Investisseurs particuliers ou expatriés</li>
+                                <li>✔ Dirigeants souhaitant diversifier au Portugal</li>
+                                <li>✔ Familles cherchant une résidence secondaire sécurisée</li>
+                                <li>✔ Jeunes investisseurs en quête de premières opérations optimisées</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Masterclass 2 jours — 1.500€</small>
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALE investissement 3 -->
+        <div class="modal fade" id="formationPromotionModal" tabindex="-1" aria-labelledby="formationPromotionLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header bg-warning text-dark border-0 position-relative">
+                        <h4 class="modal-title fw-bold" id="formationPromotionLabel">Promotion Immobilière</h4>
+                        <button type="button" class="btn-close position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+
+                    <div class="modal-body p-5 bg-light">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-3 text-warning">Devenez promoteur immobilier avec méthode</h2>
+                            <p class="lead text-muted">
+                                Une formation concrète pour apprendre à monter, sécuriser et piloter un projet de promotion immobilière au Portugal ou à l’international.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Étude de faisabilité</h5>
+                                    <p class="text-muted small mb-0">
+                                        Analyse foncière, réglementation d’urbanisme, projections budgétaires, définition de la cible commerciale et positionnement du produit.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Structuration financière</h5>
+                                    <p class="text-muted small mb-0">
+                                        Budgétisation du projet, choix de la structure de financement, négociation bancaire, levée de fonds privés ou investisseurs.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Gestion opérationnelle</h5>
+                                    <p class="text-muted small mb-0">
+                                        Pilotage du chantier, gestion des entreprises, respect des délais et contrôle des marges d’exécution.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Commercialisation & stratégie de vente</h5>
+                                    <p class="text-muted small mb-0">
+                                        Élaboration de la stratégie de commercialisation, choix des canaux de vente, gestion des compromis et actes définitifs.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="fw-semibold text-dark mb-3">Public cible :</h5>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>✔ Promoteurs en création</li>
+                                <li>✔ Investisseurs souhaitant développer leurs propres opérations</li>
+                                <li>✔ Architectes, consultants ou investisseurs avancés</li>
+                                <li>✔ Expatriés investisseurs au Portugal</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Formation 3 jours — 3.500€</small>
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALE investissement 4 -->
+        <div class="modal fade" id="formationBusinessModal" tabindex="-1" aria-labelledby="formationBusinessLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header bg-danger text-white border-0 position-relative">
+                        <h4 class="modal-title fw-bold" id="formationBusinessLabel">Entrepreneuriat & Pilotage d’entreprise</h4>
+                        <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+
+                    <div class="modal-body p-5 bg-light">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-3 text-danger">Piloter une entreprise alignée et performante</h2>
+                            <p class="lead text-muted">
+                                Construire un modèle d'affaires cohérent, réaliste et rentable en fonction de votre vision entrepreneuriale.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Vision & positionnement stratégique</h5>
+                                    <p class="text-muted small mb-0">
+                                        Clarifier votre ADN entrepreneurial, votre cible client, votre valeur ajoutée et les piliers de votre modèle économique.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Structuration financière & juridique</h5>
+                                    <p class="text-muted small mb-0">
+                                        Identifier la meilleure structure de démarrage, sécuriser votre activité sur les aspects fiscaux, sociaux et administratifs.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Pilotage et planification</h5>
+                                    <p class="text-muted small mb-0">
+                                        Établir un plan d’action réaliste, piloter les priorités, ajuster votre activité aux évolutions du marché.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Posture & leadership entrepreneurial</h5>
+                                    <p class="text-muted small mb-0">
+                                        Développer votre posture de dirigeant, prendre les bonnes décisions, équilibrer ambition, sécurité et rythme de développement.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="fw-semibold text-dark mb-3">Cette formation s’adresse à :</h5>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>✔ Entrepreneurs en création</li>
+                                <li>✔ Indépendants et consultants</li>
+                                <li>✔ Dirigeants en phase de repositionnement</li>
+                                <li>✔ Entrepreneurs expatriés souhaitant s’implanter</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Atelier 2 jours + 3 mois de suivi — 2.500€</small>
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALE investissement 5 -->
+        <div class="modal fade" id="formationCoachingDirigeantModal" tabindex="-1" aria-labelledby="formationCoachingDirigeantLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header bg-dark text-white border-0 position-relative">
+                        <h4 class="modal-title fw-bold" id="formationCoachingDirigeantLabel">Coaching Dirigeants (ICF)</h4>
+                        <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+
+                    <div class="modal-body p-5 bg-light">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-3 text-dark">Un espace de réflexion stratégique et personnel</h2>
+                            <p class="lead text-muted">
+                                Développez votre leadership personnel, clarifiez vos choix stratégiques et trouvez votre zone d’efficacité maximale en tant que dirigeant.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Décisions complexes</h5>
+                                    <p class="text-muted small mb-0">
+                                        Vous accompagner dans vos arbitrages stratégiques, choix critiques, changements d’organisation ou périodes d’incertitude.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Posture de leader</h5>
+                                    <p class="text-muted small mb-0">
+                                        Clarifier votre rôle, renforcer votre impact managérial et ajuster votre posture face aux équipes et aux partenaires.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Vision et alignement</h5>
+                                    <p class="text-muted small mb-0">
+                                        (Re)donner du sens à votre projet entrepreneurial ou à votre gouvernance d’entreprise, et garder le cap dans la durée.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Accompagnement certifié ICF</h5>
+                                    <p class="text-muted small mb-0">
+                                        Coaching professionnel certifié (niveau PCC / ICF) sur des bases éthiques, méthodologiques et confidentielles.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="fw-semibold text-dark mb-3">Pour qui :</h5>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>✔ Dirigeants de PME</li>
+                                <li>✔ Entrepreneurs en croissance</li>
+                                <li>✔ Managers stratégiques</li>
+                                <li>✔ Fondateurs d’entreprise</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Pack 10 sessions (1h30) — 4.000€ à 6.000€</small>
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALE investissement 6 -->
+        <div class="modal fade" id="formationApporteurModal" tabindex="-1" aria-labelledby="formationApporteurLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header bg-info text-white border-0 position-relative">
+                        <h4 class="modal-title fw-bold" id="formationApporteurLabel">Apporteur d'affaires Immobilier</h4>
+                        <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+
+                    <div class="modal-body p-5 bg-light">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-3 text-info">Développez votre réseau et générez des commissions haut de gamme</h2>
+                            <p class="lead text-muted">
+                                Formez-vous à l’activité d’apporteur d’affaires dans l’immobilier, en mode éthique, sécurisé et structuré.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Rôle et cadre légal</h5>
+                                    <p class="text-muted small mb-0">
+                                        Comprendre votre rôle d’apporteur, la réglementation en vigueur, les contrats d'apport, la déclaration de commissions.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Développer son réseau</h5>
+                                    <p class="text-muted small mb-0">
+                                        Identifier les bons partenaires (promoteurs, investisseurs, agents), construire des relations durables et professionnaliser sa prospection.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Valoriser ses leads</h5>
+                                    <p class="text-muted small mb-0">
+                                        Qualifier ses apports de dossiers, présenter de vraies opportunités aux bons interlocuteurs, négocier sa rémunération.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Savoir sécuriser ses commissions</h5>
+                                    <p class="text-muted small mb-0">
+                                        Techniques juridiques et contractuelles pour protéger son activité d'apport et garantir le paiement des commissions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="fw-semibold text-dark mb-3">Profil idéal :</h5>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>✔ Courtiers / Agents</li>
+                                <li>✔ Consultants indépendants</li>
+                                <li>✔ Professionnels du réseau immobilier</li>
+                                <li>✔ Personnes souhaitant démarrer en apporteur d’affaires haut de gamme</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Formation 1 journée intensive — 900€</small>
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALE investissement 7 -->
+        <div class="modal fade" id="formationConsultingModal" tabindex="-1" aria-labelledby="formationConsultingLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header bg-secondary text-white border-0 position-relative">
+                        <h4 class="modal-title fw-bold" id="formationConsultingLabel">Consulting Immobilier Premium</h4>
+                        <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+
+                    <div class="modal-body p-5 bg-light">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-3 text-secondary">Devenez consultant immobilier haut de gamme</h2>
+                            <p class="lead text-muted">
+                                Apprenez à structurer une activité de conseil immobilier complète, indépendante et crédible sur des projets à fort enjeu.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Positionnement et expertise</h5>
+                                    <p class="text-muted small mb-0">
+                                        Définir sa spécialité : promotion, audit, investissement, expatriation, montage d’opérations complexes.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Éthique & crédibilité</h5>
+                                    <p class="text-muted small mb-0">
+                                        Construire une vraie valeur ajoutée, respecter une posture de conseil, construire la confiance des clients haut de gamme.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Structuration juridique</h5>
+                                    <p class="text-muted small mb-0">
+                                        Créer son activité, sécuriser les contrats, fixer des honoraires adaptés, piloter sa facturation et sa fiscalité.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Développement commercial</h5>
+                                    <p class="text-muted small mb-0">
+                                        Stratégies de développement, partenariats institutionnels, prescripteurs, gestion des premiers mandats.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="fw-semibold text-dark mb-3">Idéal pour :</h5>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>✔ Professionnels de l’immobilier souhaitant se spécialiser</li>
+                                <li>✔ Créateurs d’activité indépendante de consulting</li>
+                                <li>✔ Experts souhaitant structurer une offre haut de gamme</li>
+                                <li>✔ Anciens promoteurs, investisseurs, juristes, architectes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Formation 2 jours + accompagnement — 2.900€</small>
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODALE investissement 8 -->
+        <div class="modal fade" id="formationWeb3Modal" tabindex="-1" aria-labelledby="formationWeb3Label" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header bg-primary text-white border-0 position-relative">
+                        <h4 class="modal-title fw-bold" id="formationWeb3Label">Web3 & Immobilier</h4>
+                        <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3 mt-2" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+
+                    <div class="modal-body p-5 bg-light">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold mb-3 text-primary">Comprendre et anticiper la révolution Web3 appliquée à l’immobilier</h2>
+                            <p class="lead text-muted">
+                                Une formation de veille et de décryptage stratégique sur la tokenisation, la blockchain et les nouvelles formes de financement immobilier.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Principes du Web3</h5>
+                                    <p class="text-muted small mb-0">
+                                        Blockchain, smart contracts, NFT, tokenisation d’actifs réels, DAOs et gouvernance décentralisée appliqués à l’immobilier.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Nouveaux modèles d’investissement</h5>
+                                    <p class="text-muted small mb-0">
+                                        Financement participatif tokenisé, levées de fonds en crypto-actifs, dématérialisation des parts immobilières.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Aspects juridiques et fiscaux</h5>
+                                    <p class="text-muted small mb-0">
+                                        Régulation actuelle, enjeux de conformité KYC/AML, fiscalité des revenus tokenisés et cadre européen à venir (MiCA).
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                    <h5 class="fw-semibold text-secondary">Opportunités & risques</h5>
+                                    <p class="text-muted small mb-0">
+                                        Avantages stratégiques du Web3, limites actuelles du marché, sécurisation des projets et vision prospective sur 5 à 10 ans.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 p-4 bg-white rounded-3 shadow-sm">
+                            <h5 class="fw-semibold text-dark mb-3">Pour qui :</h5>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li>✔ Promoteurs, investisseurs et dirigeants</li>
+                                <li>✔ Avocats, fiscalistes et professionnels du droit immobilier</li>
+                                <li>✔ Startups et fintechs immobilières</li>
+                                <li>✔ Institutionnels ou Family Offices</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-white border-0 justify-content-between px-4 py-3">
+                        <small class="text-muted">Masterclass stratégique 1 jour — 1.200€</small>
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function showSection(id) {
+        // Cacher toutes les sections
+        document.querySelectorAll('.service-section').forEach(function (el) {
+            el.classList.add('d-none');
+            el.classList.remove('d-block');
+        });
+
+        // Afficher celle demandée
+        const section = document.getElementById(id);
+        if (section) {
+            section.classList.remove('d-none');
+            section.classList.add('d-block');
+            
+        }
+
+        // Mettre en surbrillance le bon bouton
+        document.querySelectorAll(".sidebar-fixed button").forEach(function (btn) {
+            btn.classList.remove("text-primary", "fw-bold");
+        });
+
+        const activeBtn = document.querySelector(`.sidebar-fixed button[onclick="showSection('${id}')"]`);
+        if (activeBtn) {
+            activeBtn.classList.add("text-primary", "fw-bold");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showSection('coaching');
+    });
+</script>
+
+
+
+
+
+
+
