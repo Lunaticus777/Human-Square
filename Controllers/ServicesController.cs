@@ -42,7 +42,8 @@ namespace Human_Evolution.Controllers
                     Email = model.Email,
                     Phone = model.Phone,
                     ServiceType = model.ServiceType,
-                    Message = model.Message
+                    Message = model.Message,
+                    SelectedDomains = model.SelectedDomains
                 };
 
                 _context.ServiceRequests.Add(request);

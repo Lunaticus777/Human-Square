@@ -13,6 +13,7 @@ namespace Human_Evolution.Models
         public string Phone { get; set; }
         [Required]
         public string ServiceType { get; set; }
+        public string SelectedDomains { get; set; }
         public string Message { get; set; }
         public DateTime SubmittedAt { get; set; } = DateTime.UtcNow;
     }
