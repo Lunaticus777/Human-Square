@@ -29,13 +29,20 @@ namespace Human_Evolution.Controllers
             return View();
         }
 
-        // ✅ Traitement du formulaire
+        // ✅ Traitement du formulaire Orientation
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SubmitServiceRequest(ServiceRequestViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                TempData["ErrorMessage"] = "Veuillez remplir tous les champs correctement.";
+                return View("Orientation", model);
+            }
+
+            try
+            {
+                // Sauvegarde en base
                 var request = new ServiceRequest
                 {
                     Name = model.Name,
@@ -49,27 +56,28 @@ namespace Human_Evolution.Controllers
                 _context.ServiceRequests.Add(request);
                 await _context.SaveChangesAsync();
 
-                var emailBody = $@"
+                // Message email
+                string subject = "Demande via Orientation – Human Square";
+
+                string body = $@"
                     <h2>Nouvelle demande de service (Orientation)</h2>
                     <p><strong>Nom :</strong> {model.Name}</p>
                     <p><strong>Email :</strong> {model.Email}</p>
                     <p><strong>Téléphone :</strong> {model.Phone}</p>
-                    <p><strong>Domaines :</strong> {model.SelectedDomains}</p>
-                    <p><strong>Prestations :</strong> {model.ServiceType}</p>
+                    <p><strong>Domaines sélectionnés :</strong> {model.SelectedDomains}</p>
+                    <p><strong>Prestations choisies :</strong> {model.ServiceType}</p>
                     <p><strong>Message :</strong><br>{model.Message}</p>";
 
-                await _mailService.SendEmailAsync(
-                    "Nouvelle demande via Orientation",
-                    emailBody,
-                    replyTo: model.Email
-                );
+                await _mailService.SendEmailAsync(subject, body, model.Email);
 
                 TempData["SuccessMessage"] = "Votre demande a bien été envoyée.";
                 return RedirectToAction("Orientation");
             }
-
-            TempData["ErrorMessage"] = "Une erreur est survenue. Merci de vérifier les champs.";
-            return View("Orientation", model);
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Erreur lors de l'envoi : " + ex.Message;
+                return RedirectToAction("Orientation", model);
+            }
         }
     }
 }
