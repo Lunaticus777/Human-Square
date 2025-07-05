@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="fr">
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+<!DOCTYPE html>
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,47 +11,15 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
     <style>
-        #languageButtons {
+        #langForm {
             position: fixed;
             top: 10px;
             right: 10px;
             z-index: 9999;
         }
-
-            #languageButtons button {
-                border: none;
-                background: none;
-                font-size: 1.4rem;
-                cursor: pointer;
-                margin-left: 6px;
-            }
-
-        .goog-te-banner-frame.skiptranslate {
-            display: none !important;
-        }
-
-        body {
-            top: 0 !important;
-        }
-
-        .goog-logo-link,
-        .goog-te-gadget span {
-            display: none !important;
-        }
-
-        #google_translate_element {
-            display: none;
-        }
     </style>
 </head>
 <body>
-    <!-- ✅ Boutons langue -->
-    <div id="languageButtons">
-        <button onclick="translateTo('fr')">🇫🇷</button>
-        <button onclick="translateTo('pt')">🇵🇹</button>
-    </div>
-    <div id="google_translate_element"></div>
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
             <div class="container">
@@ -65,23 +35,31 @@
                 <div class="collapse navbar-collapse" id="navbarMain">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Accueil</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">@Localizer["Nav_Home"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="About">À propos</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="About">@Localizer["Nav_About"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Services" asp-action="Orientation">Prestations</a>
+                            <a class="nav-link" asp-controller="Services" asp-action="Orientation">@Localizer["Nav_Services"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Contact" asp-action="Contact">Contact</a>
+                            <a class="nav-link" asp-controller="Contact" asp-action="Contact">@Localizer["Nav_Contact"]</a>
                         </li>
-                        <form id="langForm" method="post" asp-controller="Home" asp-action="SetLanguage" class="d-flex ms-3">
-                            <select name="culture" class="form-select form-select-sm" onchange="document.getElementById('langForm').submit()">
-                                <option value="fr" selected>🇫🇷 FR</option>
-                                <option value="pt">🇵🇹 PT</option>
-                            </select>
-                        </form>
+                        <li class="nav-item d-flex align-items-center">
+                            <form method="post" asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" class="d-flex">
+                                <button type="submit" name="culture" value="fr"
+                                        class="btn btn-sm btn-outline-light me-1 @(System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("fr") ? "active" : "")"
+                                        title="Français">
+                                    🇫🇷
+                                </button>
+                                <button type="submit" name="culture" value="pt"
+                                        class="btn btn-sm btn-outline-light @(System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("pt") ? "active" : "")"
+                                        title="Português">
+                                    🇵🇹
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -100,57 +78,25 @@
             <div class="row">
                 <div class="col-md-6 mb-3 mb-md-0">
                     <h5>Human Square</h5>
-                    <p class="mb-0">Coaching & Consulting en investissement immobilier au Portugal</p>
+                    <p class="mb-0">@Localizer["Footer_Company"]</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="/Home/Privacy" class="text-light me-3">Mentions légales</a>
-                    <a asp-controller="Contact" asp-action="Contact" class="btn btn-outline-light btn-sm">Contact</a>
+                    <a href="/Home/Privacy" class="text-light me-3">@Localizer["Footer_Legal"]</a>
+                    <a asp-controller="Contact" asp-action="Contact" class="btn btn-outline-light btn-sm">@Localizer["Nav_Contact"]</a>
                 </div>
             </div>
             <hr class="border-light my-3" />
-            <p class="text-center mb-0">&copy; 2025 Human Square. Tous droits réservés.</p>
+            <p class="text-center mb-0">&copy; 2025 Human Square. @Localizer["Footer_Claim"]</p>
         </div>
     </footer>
+
+    <p class="text-center text-danger fw-bold mt-4">
+        🌍 Langue active : @System.Globalization.CultureInfo.CurrentUICulture.Name
+    </p>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-    <!-- ✅ Google Translate Script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'fr',
-                includedLanguages: 'fr,pt',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-
-        function translateTo(lang) {
-            const select = document.querySelector(".goog-te-combo");
-            if (select) {
-                select.value = lang;
-                select.dispatchEvent(new Event("change"));
-            }
-        }
-
-        // Détection automatique de langue
-        window.addEventListener("load", () => {
-            const userLang = navigator.language || navigator.userLanguage;
-            if (userLang.startsWith("pt")) {
-                const interval = setInterval(() => {
-                    const select = document.querySelector(".goog-te-combo");
-                    if (select) {
-                        select.value = "pt";
-                        select.dispatchEvent(new Event("change"));
-                        clearInterval(interval);
-                    }
-                }, 100);
-            }
-        });
-    </script>
-
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
     <partial name="_ValidationScriptsPartial" />

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+	</resheader>
+
+	<data name="Nav_Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+	<data name="Nav_About" xml:space="preserve">
+    <value>À propos</value>
+  </data>
+	<data name="Nav_Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+	<data name="Nav_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+	<data name="Footer_Legal" xml:space="preserve">
+    <value>Mentions légales</value>
+  </data>
+	<data name="Footer_Company" xml:space="preserve">
+    <value>Coaching &amp; Consulting en investissement immobilier au Portugal</value>
+  </data>
+	<data name="Footer_Claim" xml:space="preserve">
+    <value>Tous droits réservés</value>
+  </data>
+</root>

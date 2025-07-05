@@ -39,7 +39,7 @@ namespace Human_Evolution.Services
 
             try
             {
-                await smtp.ConnectAsync(_settings.Host, _settings.Port, SecureSocketOptions.SslOnConnect);
+                await smtp.ConnectAsync(_settings.Host, _settings.Port, SecureSocketOptions.StartTls);
                 await smtp.AuthenticateAsync(_settings.User, _settings.Password);
                 await smtp.SendAsync(message);
                 await smtp.DisconnectAsync(true);
